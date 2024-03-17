@@ -1,0 +1,14 @@
+-- CreateTable
+CREATE TABLE `socials` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `facebook` VARCHAR(255) NOT NULL,
+    `youtube` VARCHAR(255) NOT NULL,
+    `twitter` VARCHAR(255) NOT NULL,
+    `linkdin` VARCHAR(255) NOT NULL,
+    `about` VARCHAR(1000) NOT NULL,
+    `address` VARCHAR(255) NOT NULL,
+    `createdAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+    `updatedAt` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
