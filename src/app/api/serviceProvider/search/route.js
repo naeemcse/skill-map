@@ -1,18 +1,22 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-
-
-export async function POST(req, res) {
+export async function GET(req, res) {
 try{
-    const reqBody = await req.json();
+    // const reqBody = await req.json();
+    let {searchParams} = new URL(req.url) ;
+    let keyword = (searchParams.get('keyword')) ;
+    let divisionName = (searchParams.get('divisionName')) ;
+    let  districtName = (searchParams.get('districtName')) ;
+    let upzillaName = (searchParams.get('upzillaName')) ;
+
     const prisma = new PrismaClient();
     const result = await prisma.users.findMany({
         where: {
-            divisionName: reqBody.divisionName,
-            districtName: reqBody.districtName,
-            upzillaName: reqBody.upzillaName,
+            divisionName:divisionName,
+            districtName: districtName,
+            upzillaName: upzillaName,
             profession:{
-                contains: reqBody.profession
+                contains: keyword
             }
            // here will be a search query for the service post 
         },            

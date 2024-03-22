@@ -6,6 +6,8 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+  
 }
 
 datasource db {
@@ -25,6 +27,7 @@ model Users {
   divisionName String?@db.VarChar(255)
   districtName String? @db.VarChar(255)
   upzillaName String? @db.VarChar(255)
+  location  String? @db.VarChar(255)
   profession String? @db.VarChar(255)
   experience String? @db.VarChar(255)
   details String? @db.VarChar(255) 

@@ -39,6 +39,9 @@ h4{
     --input: 240 5.9% 90%;
     --ring: 142.1 76.2% 36.3%;
     --radius: 0.5rem;
+/* personal color  */
+    --coverbg:141, 41%, 44%;
+
   }
 
   .dark {
@@ -61,6 +64,11 @@ h4{
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
+/* personal color  */
+
+   --coverbg:141, 41%, 44%;
+
+
   }
 }
 
