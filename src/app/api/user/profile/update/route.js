@@ -6,18 +6,21 @@ import { PrismaClient } from '@prisma/client';
 export async function POST(req,res){
     try {
 
-        let headerList = headers() ;
-        let id = parseInt(headerList.get('id')) ;
+        // let headerList = headers() ;
+        // let id = parseInt(headerList.get('id')) ;
       
         let reqBody = await req.json() ;
         const prisma = new PrismaClient() ;
+        // let id = parseInt(reqBody.id) ;
+        let headerList=headers();
+        let id=parseInt(headerList.get('id'));
     
         const result = await prisma.users.update({
             where:{id:id},
             data:reqBody
         })
         
-        return NextResponse.json({status:"Success",data:result})
+        return NextResponse.json({status:"success",data:result})
 
     } catch (error) {
         return NextResponse.json({status:"fail to update",data:error})
@@ -26,13 +29,13 @@ export async function POST(req,res){
     }
 }
 
-export async function GET(req,res){
+// export async function GET(req,res){
     
-    const prisma = new PrismaClient() ;
+//     const prisma = new PrismaClient() ;
 
-    const result = await prisma.users.findMany() ;
+//     const result = await prisma.users.findMany() ;
 
-    return NextResponse.json({status:"Success",data:result})
+//     return NextResponse.json({status:"Success",data:result})
 
 
-}
+// }

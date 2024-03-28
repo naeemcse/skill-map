@@ -12,18 +12,18 @@ const EmailAddress = ({ emailAddress }) => {
     } else {
       navigator.clipboard.writeText(emailAddress);
       setCopied(true);
-      toast.success('Copied Email');
+      toast.success('Copied:'+ emailAddress);
       setTimeout(() => setCopied(false), 3000); // Reset copied state after 3 seconds
     }
   };
 
   return (
     <div className="flex items-center my-1" onClick={handleEmailClick}>
-      <a className="w-6 text-foreground hover:text-orange-600" aria-label="Email" href={`mailto:${emailAddress}`} target="_blank">
+      <a className="w-6 text-foreground hover:text-primary" aria-label="Email" href={`mailto:${emailAddress}`} target="_blank">
         <IoMailOutline />
       </a>
-      <div>{emailAddress}</div>
-      {copied && <div className="ml-2 text-gray-600">(Copied to clipboard)</div>}
+      <div className='cursor-pointer hover:text-primary'>{emailAddress}</div>
+     
     </div>
   );
 };

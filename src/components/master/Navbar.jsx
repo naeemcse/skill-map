@@ -22,7 +22,7 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-4 flex items-center space-x-4">
                 <Link
-                  href=""
+                  href="/"
                   className="text-foreground hover:bg-foreground  hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
                 >
                   Home
@@ -36,14 +36,20 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                  href="/"
+                  href="/user/login"
                   className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
                 >
                   Log in
                 </Link>
+                <Link
+                  href="/user/profile/update"
+                  className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
+                >
+                 Update
+                </Link>
 
                 <Link
-                  href="/"
+                  href="/user/registration"
                   className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
                 >
                   Registration

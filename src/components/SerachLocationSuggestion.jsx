@@ -61,7 +61,7 @@ const extractAddress = (place) => {
   return address;
 };
 
-function App({ onStateChange ,cls}) {
+function App({ onStateChange ,cls,placeholder}) {
   const searchInput = useRef(null);
   const [address, setAddress] = useState({});
   const [location, setLocation] = useState('');
@@ -138,7 +138,7 @@ function App({ onStateChange ,cls}) {
 
   return (
     <div className="App">
-      <input className={cls} ref={searchInput} type="text" placeholder="Search location...." />
+      <input className={cls} ref={searchInput} type="text" placeholder={placeholder} />
       {/* <button onClick={findMyLocation}>Insert my location </button>
       <h1> {location || 0} </h1> */}
     

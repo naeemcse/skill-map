@@ -28,19 +28,22 @@ export async function GET(req, res) {
 export async function POST(req, res) {
   try {
     let headerList = headers();
-    let id = parseInt(headerList.get("id"));
+    let id = parseInt(headerList.get('id'));
 
     let reqBody = await req.json();
     reqBody.userID = id;
-
+    reqBody.experienceFrom = parseInt(reqBody.experienceFrom);
+    reqBody.serviceCharge=parseInt(reqBody.serviceCharge);
+    // console.log(reqBody);
     const prisma = new PrismaClient();
     const result = await prisma.service.create({
-      data: reqBody,
+      data: reqBody
       // serviceCategory: {
       //  create: {
       //   serviceCategoryName:reqBody.serviceCategoryName ,
       // },
     // }
+      
     });
     return NextResponse.json({ status: "success", data: result });
   } catch (e) {

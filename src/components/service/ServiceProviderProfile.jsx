@@ -45,24 +45,38 @@ const ServiceProviderProfile = ({person}) => {
                 {person.mobile && <PhoneNumber phoneNumber={person.mobile} /> } {person.whatsApp && <FaWhatsappSquare className="text-green-500"/>}
                 </div>
                 <div className="flex items-center my-1">
-                  <Link href={person.facebookProfile || ""} target="_blank" className="text-foreground hover:text-orange-600">
+                  <Link href={person.facebookProfile || ""} target="_blank" className="text-foreground cursor-pointer hover:text-primary">
                 <FaFacebook className="text-blue-500 mr-2 inline-block"/>
                  Link for Facebook
                   </Link>
                 </div>
                 <div className="flex items-center my-1">
-                <Link href={person.linkedInProfile || ""} target="_blank" className="text-foreground hover:text-orange-600">
-                <FaLinkedin className="text-blue-500 mr-2 inline-block"/>
+                <Link href={person.linkedInProfile || ""} target="_blank" className="text-foreground cursor-pointer hover:text-primary">
+                <FaLinkedin className="text-blue-500 mr-2 inline-block cursor-pointer hover:text-primary"/>
                  Link for Linkdin
                   </Link>
                 </div>
               </div>
             </div>
+            {/* My Location */}
+            <div className="py-3 sm:order-none order-2">
+              <h2 className="text-lg font-poppins font-bold text-top-color"> Location </h2>
+              <div className="border-2 w-20 border-top-color my-3" /><div>
+                <div className="flex items-center my-1">
+                  <a className="text-foreground hover:text-primary cursor-pointer">
+                    Division: {person.divisionName}
+                  </a>
+                  <div className="ml-2"><a className="text-foreground hover:text-primary cursor-pointer">  District: {person.districtName} </a> </div>
+                  <div className="ml-2"><a className="text-foreground hover:text-primary cursor-pointer">  Upzilla: {person.upzillaName} </a> </div>
+
+                </div>
+              {/* Here will be Service Name with Link  */}
+              </div>
+            </div>
             {/* Skills */}
             <div className="py-3 sm:order-none order-2">
               <h2 className="text-lg font-poppins font-bold text-top-color"> Services </h2>
-              <div className="border-2 w-20 border-top-color my-3" />
-              <div>
+              <div className="border-2 w-20 border-top-color my-3" /><div>
                 <div className="flex items-center my-1">
                   <a className="w-6 text-foreground hover:text-orange-600">
                     
@@ -70,7 +84,6 @@ const ServiceProviderProfile = ({person}) => {
                   <div className="ml-2"> </div>
                 </div>
               {/* Here will be Service Name with Link  */}
-                
               </div>
             </div>
             {/* My Post And Link */}
