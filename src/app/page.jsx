@@ -7,10 +7,7 @@ export default function Home() {
     <>
         <Hero/>
         {/* <HompageSearchBar/> */}
-        <p> lorem
 
-
-     </p>
      </>
    
   );

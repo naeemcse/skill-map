@@ -9,10 +9,11 @@ import React from 'react';
 import { motion } from "framer-motion"
 import Text from '@/components/animation/Text';
 import HompageSearchBar from "@/components/searchBar/HompageSearchBar";
+import TopCategory from "@/components/TopCategory";
 
 const Hero = () => {
     const SpinText = "Find Your People" ;
-    const colors = ['bg-blue-500', 'bg-red-500', 'bg-green-500'];
+    const colors = ['bg-blue-500', 'bg-red-500', 'bg-green-500','bg-[#9B3908]','bg-[#5E1528]'];
     const heroPhotos = ['driver.jpg','civil_engineer.jpg','teacher.jpg'] ;
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
@@ -26,12 +27,9 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [currentColorIndex]); // Run effect whenever currentColorIndex changes
     return (
-        <>
-            <motion.div
-            
-            className={`flex flex-col md:flex-row justify-between  ${colors[currentColorIndex]} transition-all duration-1000 w-full h-[50vh] overflow-hidden pt-10`}
-
-            >
+        <div className={`  ${colors[currentColorIndex]} transition-all duration-1000 ease-linear`}>
+            <div
+            className={`flex flex-col md:flex-row justify-between  w-full h-96 md:h-screen overflow-hidden pt-10 md:pt-32`}>
                 <div  className='mx-auto '>
                     {/* Search Box location and profession  */}
                        <Text props={SpinText}/>
@@ -45,11 +43,11 @@ const Hero = () => {
                   height={200}
                   alt="Picture of the author"/>
                 </div>
+            </div>
 
-            </motion.div>
+            <TopCategory/>
 
-
-        </>
+        </div>
     );
 };
 
