@@ -10,7 +10,6 @@ import { motion } from "framer-motion"
 import Text from '@/components/animation/Text';
 import HompageSearchBar from "@/components/searchBar/HompageSearchBar";
 
-
 const Hero = () => {
     const SpinText = "Find Your People" ;
     const colors = ['bg-blue-500', 'bg-red-500', 'bg-green-500'];
@@ -41,12 +40,15 @@ const Hero = () => {
                 </div>
                 <div className=' mx-auto transition-opacity duration-1000'>
                   <Image src={`/image/${heroPhotos[currentPhotoIndex]}`}
-                  className='invisible  md:visible rounded-sm mt-5'
+                  className='invisible  md:visible rounded-sm mt-5 scale-150 ease-in-out'
                   width={200}
                   height={200}
                   alt="Picture of the author"/>
                 </div>
+
             </motion.div>
+
+
         </>
     );
 };
