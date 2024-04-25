@@ -27,26 +27,27 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [currentColorIndex]); // Run effect whenever currentColorIndex changes
     return (
-        <div className={`  ${colors[currentColorIndex]} transition-all duration-1000 ease-linear`}>
+        <div className={`  ${colors[currentColorIndex]} transition-all duration-1000 ease-linear flex flex-col  w-full h-96 md:h-screen z-0`}>
             <div
-            className={`flex flex-col md:flex-row justify-between  w-full h-96 md:h-screen overflow-hidden pt-10 md:pt-32`}>
-                <div  className='mx-auto '>
+                className={`flex flex-col md:flex-row justify-between  overflow-hidden pt-10 md:pt-32`}>
+                <div className='mx-auto '>
                     {/* Search Box location and profession  */}
-                       <Text props={SpinText}/>
-                       <HompageSearchBar/>
+                    <Text props={SpinText}/>
+                    <HompageSearchBar/>
 
                 </div>
                 <div className=' mx-auto transition-opacity duration-1000'>
-                  <Image src={`/image/${heroPhotos[currentPhotoIndex]}`}
-                  className='invisible  md:visible rounded-sm mt-5 scale-150 ease-in-out'
-                  width={200}
-                  height={200}
-                  alt="Picture of the author"/>
+                    <Image src={`/image/${heroPhotos[currentPhotoIndex]}`}
+                           className='invisible  md:visible rounded-sm mt-5 scale-150 ease-in-out'
+                           width={200}
+                           height={200}
+                           alt="Picture of the author"/>
                 </div>
+
             </div>
-
-            <TopCategory/>
-
+            <div className="content-center">
+                <TopCategory/>
+            </div>
         </div>
     );
 };
