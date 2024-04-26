@@ -9,11 +9,16 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { Input } from "@/components/ui/input"
+import professionList from "@/assets/professionList";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
 
 const SelectLocationSearchBar = ({ divisions }) => {
     const [selectedDivision, setSelectedDivision] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [selectedUpazila, setSelectedUpazila] = useState('');
+    const [profession, setProfession] = useState('');
 
     const handleDivisionChange = (event) => {
         const selectedDivisionValue = event;
@@ -31,11 +36,12 @@ const SelectLocationSearchBar = ({ divisions }) => {
     };
 
     return (
-        <div className="sticky top-16 z-50 flex flex-col md:flex-row items-center justify-center">
+        <div className="sticky top-16 z-50 lg:mx-20 flex flex-col md:flex-row gap-2 items-center justify-center">
             {/* Division Section */}
-            <Select defaultValue={selectedDivision}
+            <Select
+                defaultValue={selectedDivision}
                     onValueChange={handleDivisionChange} >
-                <SelectTrigger className="w-[180px] text-cyan-400" >
+                <SelectTrigger className="w-4/5 md:w-1/5 text-cyan-400" >
                     <SelectValue id="division" placeholder="Select Division"/>
                 </SelectTrigger>
                 <SelectContent>
@@ -49,9 +55,10 @@ const SelectLocationSearchBar = ({ divisions }) => {
             </Select>
 
             {/* Districts */}
-            <Select defaultValue={selectedDistrict}
+            <Select
+                defaultValue={selectedDistrict}
                     onValueChange={handleDistrictChange} disabled={!selectedDivision}>
-                <SelectTrigger className="w-[180px] text-cyan-400">
+                <SelectTrigger className="w-4/5 md:w-1/5">
                     <SelectValue id="district" placeholder="Select District" />
                 </SelectTrigger>
                 <SelectContent>
@@ -66,10 +73,11 @@ const SelectLocationSearchBar = ({ divisions }) => {
             </Select>
 
             {/* Upazila */}
-            <Select defaultValue={selectedUpazila}
+            <Select
+                defaultValue={selectedUpazila}
                          onValueChange={(event) => setSelectedUpazila(event)}
                          disabled={!selectedDistrict}>
-                <SelectTrigger className="w-[180px] text-cyan-400">
+                <SelectTrigger className="w-4/5 md:w-1/5 md:m-2 ">
                     <SelectValue id="upazila" placeholder="Select Upazila" />
                 </SelectTrigger>
                 <SelectContent>
@@ -83,6 +91,24 @@ const SelectLocationSearchBar = ({ divisions }) => {
                     </SelectGroup>
                 </SelectContent>
             </Select>
+            <Input className="w-4/5 md:w-1/5 md:m-2"
+            type="text"
+            placeholder="Profession"
+            value={profession}
+            onChange={(e)=>(setProfession(e.target.value))}
+            list="professions"
+            />
+            <datalist id = "professions"   className=" md:m-2">
+                {professionList.map((suggestion, index) => (
+                    <option key={index} value={suggestion}/>
+                ))}
+            </datalist>
+            <Link
+            className="md:w-1/5 md:m-2"
+          href={`/search/?divisionName=${selectedDivision}&districtName=${selectedDistrict}&upzillaName=${selectedUpazila}&keyword=${profession}`}
+        >
+            <Button className='w-full' > Submit </Button>
+            </Link>
         </div>
 
     );
