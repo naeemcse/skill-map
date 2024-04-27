@@ -4,8 +4,8 @@ import {useState} from 'react'
 import { UploadButton } from '@/utility/uploadthing';
 import Image from "next/image"; 
 
-const uploader = () => {
-    const [imageURL,setImageURL]  = useState("")
+const Uploader = () => {
+    const [imageURL,setImageURL]  = useState("") ;
     return (
         <div>
         <UploadButton
@@ -25,11 +25,11 @@ const uploader = () => {
       />
 
         {
-            imageURL.length ? ( <Image src={imageURL} width={500} height={200} />  ): null 
+            imageURL.length ? ( <Image src={imageURL} width={500} height={200} />  ): null
         }
 
         </div>
     );
 };
 
-export default uploader;
+export default Uploader;

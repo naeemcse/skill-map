@@ -24,6 +24,9 @@ icon: React Icon [https://react-icons.github.io/react-icons/]
 Email Sending Tool: 
 Resend [https://resend.com/overview]
 
+Cloud image storred: 
+uploadthing: [https://docs.uploadthing.com/getting-started/appdir]
+
 DataBase ORM : Prisma <a ref="https://www.prisma.io/docs/getting-started/quickstart" > Link </a>
 
 DataBase : MySQL

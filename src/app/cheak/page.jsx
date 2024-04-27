@@ -8,7 +8,6 @@ const Page = () => {
         <div>
             <h1> Hi  </h1>
             <DivisionDistrictUpazilaSelector divisions={divisions}/>
-
             <Uploader/>
         </div>
     );

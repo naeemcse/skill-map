@@ -10,12 +10,13 @@ import { ErrorToast, IsEmpty, SuccessToast } from "@/utility/FormHelper";
 import { useRouter } from "next/navigation";
 import {Button }from "@/components/ui/button"
 import SearchLocationSuggestion from "@/components/SerachLocationSuggestion";
+import ImageUploader from "@/components/ImageUploader";
 
 
 const UpdateUserProfile = ({info}) => {
   let router = useRouter();
-  
-  const classOfInput = `border bg-background border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-96 m-1`
+
+    const classOfInput = `border bg-background border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-96 m-1`
   
   let [data, setData] = useState({
         // id:info.id,
@@ -40,7 +41,7 @@ const UpdateUserProfile = ({info}) => {
     // createdAt : "",
     // updatedAt: "",
   });
-
+// To show previous data form backend
   useEffect(() => {
     setData({
         // id:info.id,
@@ -80,9 +81,12 @@ const handleChangeLocationState = (value) => {
         ['location']: value
     }))
   };
+    const [imageURL,setImageURL]  = useState(info.profilePhoto) ;
 
   const formSubmit = async (e) => {
-    e.preventDefault()
+// changing profile image url
+      inputOnChange("profilePhoto",imageURL) ;
+    e.preventDefault() ;
     const options={method:'POST', body:JSON.stringify(data)}
     let res=await (await fetch(`/api/user/profile/update`,options)).json();
   
@@ -97,21 +101,20 @@ const handleChangeLocationState = (value) => {
   return (
     <div>
       <div className="bg-card-background shadow-md rounded px-8 pt-6 p-8 mb-4 flex flex-col m-2">
-        <Button className="bg-foreground text-background  w-1/2" onClick={formSubmit}  > Save Data </Button>
-        <div className="flex rounded-t-lg bg-cover sm:px-2 w-full bg-primary h-60">
-          <div className="text-center h-40 w-40 overflow-hidden sm:rounded-full sm:relative sm:p-0 top-10 left-5 p-3 border-2 border-card-foreground">
+        <Button className="bg-foreground text-background w-auto mx-auto " onClick={formSubmit}  > Save Data </Button>
+        <div className="flex flex-col-reverse md:flex-row justify-center items-center text-center rounded-t-lg bg-cover sm:px-2 w-full bg-primary h-auto mt-2">
+          <div className="m-2">
             <Image
-              src={ data.profilePhoto || "/image/dummyUser.png"}
-              alt={"profile Photo"}
-              width={200}
+            className="w-32 h-32 m-1 rounded-full border-2 border-card-foreground mx-auto"
+              src={ imageURL|| "/image/dummyUser.png"}
+              alt={data.firstName}
+              width={100}
               height={100}
               loading="lazy"
             />
-           <input
-              className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3"
-             
-              type="file"
-            />
+
+              <ImageUploader setImageURL = {setImageURL} />
+
           </div>
           <div className="w-2/3 sm:text-center pl-5 mt-10 text-start overflow-hidden">
             <p className="text-heading"> Google Location </p>
