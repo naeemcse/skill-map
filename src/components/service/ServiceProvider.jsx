@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { MdWork } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 import Link from "next/link";
-
+import  Image from "next/image";
 const ServiceProvider = (props) => {
   return (
     <div className="flex flex-wrap">
@@ -14,17 +14,21 @@ const ServiceProvider = (props) => {
             className="max-w-2xl mx-4 shadow-lg shadow-primary sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg---card shadow-xl rounded-lg text---card-foreground border-2 bordercard-foreground"
           >
             <div className="rounded-t-lg h-32 overflow-hidden">
-              <img
+              <Image
                 className="object-cover object-top w-full"
                 src="/image/coverphoto.jpg"
                 alt={item.lastName}
+                width={300}
+                height={100}
               />
             </div>
             <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border--card-foreground rounded-full overflow-hidden">
-              <img
-                className="object-cover object-center h-32"
+              <Image
+                className="object-cover object-center w-32 h-32"
                 src={item.profilePhoto || "/image/dummyUser.png"}
                 alt={item.lastName}
+                width={100}
+                height={100}
               />
             </div>
             <div className="text-center mt-2">
