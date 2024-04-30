@@ -5,6 +5,7 @@ import {
     AvatarFallback,
     AvatarImage,
   } from "@/components/ui/avatar"
+import parser from 'html-react-parser'
 const PostDetails = ({service}) => {
   return (
     <div>
@@ -22,10 +23,13 @@ const PostDetails = ({service}) => {
               <h3 className="text-4xl font-bold mt-4 mb-2">
             {service.shortContent}
               </h3>
-              <p className="text-foreground mb-4">
+              <div className="text-foreground text-justify mb-4">
                {/* it will be React parsing and html's output  */}
-              {service.content}
-              </p>
+                {
+                  parser(service.content)
+
+                }
+              </div>
               <p className="text-foreground mb-4">
                 Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat

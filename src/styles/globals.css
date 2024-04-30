@@ -113,6 +113,18 @@ ul,
 ol {
   padding: 0 1rem;
 }
+/*Tiptap Input size */
+.tiptap-vuetify-editor__content {
+
+  transition: all 2s, height 0s;
+ /*keep the existing style transition except the height so no laggy behavior when resizing*/
+}
+.ProseMirror {
+  padding: 10px;
+  height: 100%;
+  overflow: auto;
+/*// To make the content clickable along the height*/
+}
 
 /* Class for Google font */
 

@@ -10,14 +10,14 @@ import Subscript from '@tiptap/extension-subscript'
 import Superscript from '@tiptap/extension-superscript'
 import TextStyle from "@tiptap/extension-text-style"
 import Placeholder from '@tiptap/extension-placeholder'
-import {  Editor, useEditor, EditorContent } from '@tiptap/react'
+import {  useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import TextAlign from "@tiptap/extension-text-align";
 import Image from '@tiptap/extension-image'
 import MenuBar from "@/components/editor/MenuBar";
-import {useCallback} from "react";
 
-const Tiptap = () => {
+const Tiptap = ({setHtmlContent}) => {
+
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -55,29 +55,20 @@ const Tiptap = () => {
                 // },
             })
         ],
-        
     })
     if (!editor) {
         return null
     }
-    const toggleBold = () => editor.chain().focus().toggleBold().run();
-    const toggleItalic = () => editor.chain().focus().toggleItalic().run();
-    // const toggleUnderline = () => editor.chain().focus().toggleUnderline().run();
+
     const handleEditorChanges = () => {
         const html = editor?.getHTML();
-        const json = editor?.getJSON();
-        const text = editor?.getText();
-        console.log("Html ====>", html);
-        console.log("JSON ====>", json);
-        console.log("Text ====>", text);
+        setHtmlContent(html) ;
+        // const json = editor?.getJSON();
+        // const text = editor?.getText();
+        // console.log("Html ====>", html);
+        // console.log("JSON ====>", json);
+        // console.log("Text ====>", text);
     };
-    const addImage = () => {
-        const url = window.prompt('URL')
-
-        if (url) {
-            editor.chain().focus().setImage({ src: url }).run()
-        }
-    }
 
     if (!editor) {
         return null
@@ -85,7 +76,7 @@ const Tiptap = () => {
 
     return (
         <div>
-            <div className="flex flex-wrap justify-center text-center gap-2">
+            <div className="m-2  flex flex-wrap justify-center text-center gap-2">
 
                 {/*    For color */}
                 <input
@@ -154,17 +145,19 @@ const Tiptap = () => {
 
 
             </div>
-            <div className="text-black rounded-xl bg-green-200">
+            <div className="text-black border-2 border-white rounded-xl bg-background">
                 <MenuBar editor={editor}/>
                 <EditorContent className="border h-screen" editor={editor}/>
             </div>
             <button
                 type="button"
                 onClick={handleEditorChanges}
-                className="w-full px-5 py-2.5 my-2 text-xl font-bold text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                className="w-auto p-2.5 text-center mx-auto bg-primary text-foreground border border-white rounded-md "
             >
-                see on console
+                Save
             </button>
+
+
         </div>
     )
 }
