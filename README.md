@@ -31,6 +31,11 @@ DataBase ORM : Prisma <a ref="https://www.prisma.io/docs/getting-started/quickst
 
 DataBase : MySQL
 
+Onlie Photo uppoad: uploadthing.com
+
+Rich Text-Editor: TipTap 
+
+
 
 
 ## Prisma Instruction:
