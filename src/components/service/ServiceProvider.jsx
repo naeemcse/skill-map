@@ -23,9 +23,9 @@ const ServiceProvider = (props) => {
               />
             </div>
             <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border--card-foreground rounded-full overflow-hidden">
-              <Image
+              <img
                 className="object-cover object-center w-32 h-32"
-                src={item.profilePhoto || "/image/dummyUser.png"}
+                src={ item.profilePhoto||  "/image/dummyUser.png"}
                 alt={item.lastName}
                 width={100}
                 height={100}
