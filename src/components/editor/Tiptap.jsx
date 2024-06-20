@@ -87,6 +87,7 @@ const Tiptap = ({setHtmlContent}) => {
                     className="cursor-pointer"
                 />
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().setColor('#958DF1').run()}
                     className={`border rounded p-1 ${editor.isActive('textStyle', {color: '#958DF1'}) ? 'is-active bg-[#958DF1] text-white' : 'text-[#958DF1] ' } ` }
                     data-testid="setPurple"
@@ -94,6 +95,7 @@ const Tiptap = ({setHtmlContent}) => {
                     purple
                 </button>
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().setColor('#F98181').run()}
                     className={`border rounded p-1 ${editor.isActive('textStyle', {color: '#F98181'}) ? 'is-active bg-[#F98181] text-white' : 'text-[#F98181] ' } ` }
                     data-testid="setRed"
@@ -101,6 +103,7 @@ const Tiptap = ({setHtmlContent}) => {
                     red
                 </button>
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().setColor('#FBBC88').run()}
                     className={`border rounded p-1 ${editor.isActive('textStyle', {color: '#FBBC88'}) ? 'is-active bg-[#FBBC88] text-white' : 'text-[#FBBC88] ' } ` }
                     data-testid="setOrange"
@@ -108,6 +111,7 @@ const Tiptap = ({setHtmlContent}) => {
                     orange
                 </button>
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().setColor('#FAF594').run()}
                     className={`border rounded p-1 ${editor.isActive('textStyle', {color: '#FAF594'}) ? 'is-active bg-[#FAF594] text-white' : 'text-[#FAF594] ' } ` }
                     data-testid="setYellow"
@@ -115,6 +119,7 @@ const Tiptap = ({setHtmlContent}) => {
                     yellow
                 </button>
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().setColor('#70CFF8').run()}
                     className={`border rounded p-1 ${editor.isActive('textStyle', {color: '#70CFF8'}) ? 'is-active bg-[#70CFF8] text-white' : 'text-[#70CFF8] ' } ` }
                     data-testid="setBlue"
@@ -122,6 +127,7 @@ const Tiptap = ({setHtmlContent}) => {
                     blue
                 </button>
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().setColor('#94FADB').run()}
                     className={`border rounded p-1 ${editor.isActive('textStyle', {color: '#94FADB'}) ? 'is-active bg-[#94FADB] text-white' : 'text-[#94FADB] ' } ` }
                     data-testid="setTeal"
@@ -129,6 +135,7 @@ const Tiptap = ({setHtmlContent}) => {
                     teal
                 </button>
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().setColor('#B9F18D').run()}
                     className={`border rounded p-1 ${editor.isActive('textStyle', {color: '#B9F18D'}) ? 'is-active bg-[#B9F18D] text-white' : 'text-[#B9F18D] ' } ` }
                     data-testid="setGreen"
@@ -136,6 +143,7 @@ const Tiptap = ({setHtmlContent}) => {
                     green
                 </button>
                 <button
+                type="button"
                     onClick={() => editor.chain().focus().unsetColor().run()}
                     data-testid="unsetColor"
                 >

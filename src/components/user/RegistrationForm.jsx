@@ -19,7 +19,8 @@ const RegistrationForm = () => {
     });
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async(e) =>
+  {
     e.preventDefault();
     // Handle form submission logic here
     const options={method:'POST', body:JSON.stringify(formData)}

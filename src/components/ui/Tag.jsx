@@ -2,7 +2,8 @@ import React from 'react';
 
 const TagComponent = ({ tagString="" }) => {
   // Split the tagString into individual words
-  const tags = tagString.split(',');
+  const tags = tagString ?  tagString.split(','):[];
+
 
   return (
     <div>

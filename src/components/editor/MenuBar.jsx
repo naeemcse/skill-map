@@ -366,6 +366,7 @@ const MenuBar = ({ editor }) => {
             {/* For SuperScript and SubScript */}
 
             <button
+            type="button"
                 title="Subscript"
                 onClick={() => editor.chain().focus().toggleSubscript().run()}
                 className={ `py-2.5 px-[15px] border border-white rounded-lg cursor-pointer ${editor.isActive('subscript') ? 'is-active text-amber-500' : 'text-white'} `}
