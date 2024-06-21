@@ -7,7 +7,6 @@ export async function GET(req, res) {
     let id = parseInt(searchParams.get('sereviceID')) ;
     // let headerList = headers();
     // let id = parseInt(headerList.get("sereviceID"));
-
     const prisma = new PrismaClient();
     const result = await prisma.service.findFirst({
       include:{

@@ -4,17 +4,20 @@ import { ThemeProvider } from "@/components/theme-provider"
 import NextTopLoader from 'nextjs-toploader';
 import PlainLayout from "@/components/master/PlainLayout";
 import  { Toaster } from 'react-hot-toast';
-const inter = Inter({ subsets: ["latin"] });
+import  {AppWrapper} from "@/contex/contex"
 
+const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Skill Map",
   description: "Developed by Najmul Islam Naeem and Belal Uddin",
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body className={inter.className}>
+      <AppWrapper>
       <NextTopLoader
        color="#4CCD99"
        initialPosition={0.08}
@@ -41,6 +44,7 @@ export default function RootLayout({ children }) {
             </PlainLayout>
           </ThemeProvider>
         <Toaster  position="bottom-center"/>
+      </AppWrapper>
         </body>
     </html>
   );
