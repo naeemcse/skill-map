@@ -9,7 +9,7 @@ import {
 } from "@/utility/FormHelper";
 import { useRouter } from "next/navigation";
 import Tiptap from "@/components/editor/Tiptap";
-import ImageUploader from "@/components/ImageUploader";
+import ImageUploader from "@/components/uploadthing/ImageUploader";
 import DivisionDistrictUpazilaSelector from "@/components/DivisionDistrictUpazilaSelector";
 import LocationSelector from "@/components/locationSelector/LocationSelector";
 

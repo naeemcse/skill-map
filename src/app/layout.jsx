@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import NextTopLoader from 'nextjs-toploader';
-import PlainLayout from "@/components/master/PlainLayout";
+import PlainLayout from "@/components/master/layout/PlainLayout";
 import  { Toaster } from 'react-hot-toast';
 import  {AppWrapper} from "@/contex/contex"
 

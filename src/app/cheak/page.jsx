@@ -1,5 +1,5 @@
 import React from 'react';
-import Uploader from "@/components/Uploader"
+import Uploader from "@/components/uploadthing/Uploader"
 import DivisionDistrictUpazilaSelector from "@/components/DivisionDistrictUpazilaSelector";
 import {divisions} from "@/assets/divisinDistrictUpzillaName";
 import Tiptap from "@/components/editor/Tiptap";

@@ -10,7 +10,7 @@ import { ErrorToast, IsEmpty, SuccessToast } from "@/utility/FormHelper";
 import { useRouter } from "next/navigation";
 import {Button }from "@/components/ui/button"
 import SearchLocationSuggestion from "@/components/SerachLocationSuggestion";
-import ImageUploader from "@/components/ImageUploader";
+import ImageUploader from "@/components/uploadthing/ImageUploader";
 
 
 const UpdateUserProfile = ({info}) => {

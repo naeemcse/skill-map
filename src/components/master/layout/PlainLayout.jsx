@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '@/components/master/Navbar';
+import Navbar from '@/components/master/layout/navbar/Navbar';
 import { cookies } from 'next/headers'
 
 const PlainLayout = (props) => {

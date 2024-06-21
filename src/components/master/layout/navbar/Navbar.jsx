@@ -14,7 +14,7 @@ const Navbar = ({isLoggedIn}) => {
             <div className="flex items-center">
               <RightSideBar isLoggedIn={isLoggedIn}/>
               <div className="flex-shrink-0">
-                <Link href="/" className="text-foreground">
+                <Link href="/public" className="text-foreground">
                  <Image className="m-5 p-2 rounded-md" src={ theme === "dark" ?"/logo-dark.png":"/logo-light.png"}width={150} height={90} loading='lazy' alt="Logo" title="Skill Map"/>
                 </Link>
               </div>
@@ -23,14 +23,14 @@ const Navbar = ({isLoggedIn}) => {
             <div className="hidden md:block">
               <div className="ml-4 flex items-center space-x-4">
                 <Link
-                    href="/"
+                    href="/public"
                     className="text-foreground hover:bg-foreground  hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
                 >
                   Home
                 </Link>
 
                 <Link
-                    href="/"
+                    href="/public"
                     className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
                 >
                   Services

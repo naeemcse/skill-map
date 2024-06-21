@@ -6,8 +6,8 @@ import { FaWhatsappSquare } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
-import PhoneNumber from "@/components/PhoneNumber"
-import EmailCopy from "@/components/EmailCopy"
+import PhoneNumber from "@/components/helper/PhoneNumber"
+import EmailCopy from "@/components/helper/EmailCopy"
 const ServiceProviderProfile = ({person}) => {
     return (
       <div>

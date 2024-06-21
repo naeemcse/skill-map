@@ -9,7 +9,7 @@ import React from 'react';
 import { motion } from "framer-motion"
 import Text from '@/components/animation/Text';
 import HompageSearchBar from "@/components/searchBar/HompageSearchBar";
-import TopCategory from "@/components/TopCategory";
+import TopCategory from "@/components/master/home/TopCategory";
 import CarosolPhoto from "@/components/master/home/hero/CarosolPhoto";
 
 const Hero = () => {
