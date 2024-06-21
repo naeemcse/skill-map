@@ -7,8 +7,7 @@ const MainSection = () => {
     return (
         <div>
             <SelectLocationSearchBar divisions={divisions}/>
-            <SearchPerson/>
-
+            {/*<SearchPerson/>*/}
         </div>
     );
 };
