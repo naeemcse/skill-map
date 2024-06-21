@@ -18,8 +18,7 @@ import Link from "next/link";
 import ModeToggle from "@/components/ModeToggle";
 import Image from "next/image";
 
-
-export default function DrawerDemo() {
+export default function DrawerDemo({isLoggedIn}) {
     const {theme} = useTheme();
 
     return (
@@ -59,25 +58,37 @@ export default function DrawerDemo() {
                             Services
                         </Link>
 
-                        <Link
-                            href="/user/login"
-                            className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
-                        >
-                            Log in
-                        </Link>
-                        <Link
-                            href="/user/profile/update"
-                            className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
-                        >
-                            Update
-                        </Link>
+                        {
+                            isLoggedIn?(<>
+                                <Link
+                                    href="/user/profile/update"
+                                    className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
+                                >  Update
+                                </Link>
+                                <Link
+                                    href="api/user/login"
+                                    className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
+                                >
+                                    Log Out
+                                </Link>
 
-                        <Link
-                            href="/user/registration"
-                            className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
-                        >
-                            Registration
-                        </Link>
+                            </>):(<>   <Link
+                                href="/user/login"
+                                className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
+                            >
+                                Log in
+                            </Link>
+                                <Link
+                                    href="/user/registration"
+                                    className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
+                                >
+                                    Registration
+                                </Link>
+                            </>)
+                        }
+
+
+
                         <ModeToggle/>
                     </div>
 
