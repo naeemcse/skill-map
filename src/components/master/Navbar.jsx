@@ -3,6 +3,7 @@ import Link from "next/link";
 import ModeToggle from "@/components/ModeToggle";
 import Image from "next/image";
 import {useTheme} from "next-themes";
+import RightSideBar from "@/components/master/layout/sidebar/RightSidebar"
 const Navbar = () => {
   const {theme} = useTheme();
   return (
@@ -11,6 +12,7 @@ const Navbar = () => {
         <div className="mx-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
+              <RightSideBar/>
               <div className="flex-shrink-0">
                 <Link href="/" className="text-foreground">
                  <Image className="m-5 p-2 rounded-md" src={ theme === "dark" ?"/logo-dark.png":"/logo-light.png"}width={150} height={90} loading='lazy' alt="Logo" title="Skill Map"/>
@@ -59,6 +61,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
     </>
   );
 };
