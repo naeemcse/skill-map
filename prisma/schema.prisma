@@ -5,9 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "fullTextIndex"]
-  
 }
 
 datasource db {
@@ -15,76 +14,99 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Users {
-  id        Int      @id @default(autoincrement())
-  firstName  String? @db.VarChar(255)
-  lastName  String? @db.VarChar(255)
-  email     String @unique @db.VarChar(200)
-  password  String? @db.VarChar(255)
-  dateofBirth String? @db.VarChar(10)
+  id           Int     @id @default(autoincrement())
+  firstName    String? @db.VarChar(255)
+  lastName     String? @db.VarChar(255)
+  email        String  @unique @db.VarChar(200)
+  password     String? @db.VarChar(255)
+  dateofBirth  String? @db.VarChar(10)
   profilePhoto String? @db.VarChar(255)
-  divisionName String?@db.VarChar(255)
+  divisionName String? @db.VarChar(255)
   districtName String? @db.VarChar(255)
-  upzillaName String? @db.VarChar(255)
-  location  String? @db.VarChar(255)
-  profession String? @db.VarChar(255)
-  experience String? @db.VarChar(255)
-  details String? @db.VarChar(255) 
+  upzillaName  String? @db.VarChar(255)
+  location     String? @db.VarChar(255)
+  profession   String? @db.VarChar(255)
+  experience   String? @db.VarChar(255)
+  details      String? @db.VarChar(255)
 
-  mobile    String? @unique @db.VarChar(255) 
-  whatsApp Boolean? @default(false)
-  facebookProfile String? @db.VarChar(255)
-  linkedInProfile String? @db.VarChar(255) 
+  mobile          String?  @unique @db.VarChar(255)
+  whatsApp        Boolean? @default(false)
+  facebookProfile String?  @db.VarChar(255)
+  linkedInProfile String?  @db.VarChar(255)
 
-  otp       String? @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  posts     Posts[]
-// Relationship for reviews made by this user
-  reviewsMadeByUser  ProfileReviews[]  @relation("ReviewsMadeByUser")
+  otp               String?          @db.VarChar(255)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  posts             Posts[]
+  // Relationship for reviews made by this user
+  reviewsMadeByUser ProfileReviews[] @relation("ReviewsMadeByUser")
 
   // Relationship for reviews made for this user
-  reviewsReceivedByUser  ProfileReviews[]  @relation("ReviewsReceivedByUser")
+  reviewsReceivedByUser ProfileReviews[] @relation("ReviewsReceivedByUser")
   // relation for service provider
-  Service Service[] 
+  Service               Service[]
   // retalion for service review
-  ServiceReview ServiceReview[]
+  ServiceReview         ServiceReview[]
   // Relationship for sent messages
-  sentMessages   Message[]  @relation("SentMessages")
-  
+  sentMessages          Message[]        @relation("SentMessages")
   // Relationship for received messages
-  receivedMessages   Message[]  @relation("ReceivedMessages")
+  receivedMessages      Message[]        @relation("ReceivedMessages")
+
+  // Relationship for conversation
+  conversationsAsSender   Conversation[] @relation("SenderConversations")
+  conversationsAsReceiver Conversation[] @relation("ReceiverConversations")
+
   // Relationship for comments
-  comments  Comments[]
+  comments Comments[]
 }
+
 model Message {
-  id            Int       @id @default(autoincrement())
-  
+  id Int @id @default(autoincrement())
+
   // Relationship with the sender user
-  sender        Users     @relation("SentMessages", fields: [senderId], references: [id])
-  senderId      Int
+  sender   Users @relation("SentMessages", fields: [senderId], references: [id])
+  senderId Int
 
   // Relationship with the receiver user
-  receiver      Users     @relation("ReceivedMessages", fields: [receiverId], references: [id])
-  receiverId    Int
-  
-  content       String
-  sentAt        DateTime   @default(now())
+  receiver   Users @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  receiverId Int
+
+  // Relationship with Coversation
+  conversation   Conversation @relation("ConversationMessages", fields: [conversationId], references: [id])
+  conversationId Int
+
+  content String
+  sentAt  DateTime @default(now())
 }
+
+// model for conversation
+model Conversation {
+  id            Int       @id @default(autoincrement())
+  senderId      Int
+  receiverId    Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  lastMessage   String?
+  lastMessageAt DateTime?
+  sender        Users     @relation("SenderConversations", fields: [senderId], references: [id])
+  receiver      Users     @relation("ReceiverConversations", fields: [receiverId], references: [id])
+  messages      Message[] @relation("ConversationMessages")
+}
+
 model ProfileReviews {
-  id                     Int       @id @default(autoincrement())
+  id            Int   @id @default(autoincrement())
   // Relationship with the user who made the review
-  reviewer               Users     @relation("ReviewsMadeByUser", fields: [userIdReviwer], references: [id])
-  userIdReviwer          Int
+  reviewer      Users @relation("ReviewsMadeByUser", fields: [userIdReviwer], references: [id])
+  userIdReviwer Int
 
   // Relationship with the user who is reviewed
-  serviceProvider        Users     @relation("ReviewsReceivedByUser", fields: [userIDserviceProvider], references: [id])
-  userIDserviceProvider  Int
-  review                 String    @db.Text
-  rating                 Int ?
-  createdAt              DateTime  @default(now())
-  updatedAt              DateTime  @updatedAt
+  serviceProvider       Users    @relation("ReviewsReceivedByUser", fields: [userIDserviceProvider], references: [id])
+  userIDserviceProvider Int
+  review                String   @db.Text
+  rating                Int?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
 }
 
 model Categories {
@@ -94,90 +116,95 @@ model Categories {
   updatedAt DateTime @updatedAt
   posts     Posts[]
 }
-model Posts {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(255)
-  shortContent   String ?  @db.Text
-  content   String ?  @db.Text
-  image1     String?   @db.VarChar(255)
-  image2     String?   @db.VarChar(255)
-  image3     String?   @db.VarChar(255)
-  image4     String?   @db.VarChar(255)
-  keywords  String?   @db.VarChar(255)
-  tags      String?   @db.VarChar(255)
-  type      String?   @db.VarChar(255)
-  catID    Int 
-  category  Categories @relation(fields: [catID], references: [id])
 
-  users     Users    @relation(fields: [userId], references: [id])
+model Posts {
+  id           Int        @id @default(autoincrement())
+  title        String     @db.VarChar(255)
+  shortContent String?    @db.Text
+  content      String?    @db.Text
+  image1       String?    @db.VarChar(255)
+  image2       String?    @db.VarChar(255)
+  image3       String?    @db.VarChar(255)
+  image4       String?    @db.VarChar(255)
+  keywords     String?    @db.VarChar(255)
+  tags         String?    @db.VarChar(255)
+  type         String?    @db.VarChar(255)
+  catID        Int
+  category     Categories @relation(fields: [catID], references: [id])
+
+  users     Users      @relation(fields: [userId], references: [id])
   userId    Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
   comments  Comments[]
 }
+
 model Comments {
   id        Int      @id @default(autoincrement())
   postID    Int
   post      Posts    @relation(fields: [postID], references: [id])
   userID    Int
   user      Users    @relation(fields: [userID], references: [id])
-  content   String?   @db.Text
+  content   String?  @db.Text
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model Service{
-  id        Int      @id @default(autoincrement())
-  serviceProvider     Users    @relation(fields: [userID], references: [id])
-  userID    Int
-  serviceName      String   @db.VarChar(255)
-  shortContent   String?   @db.Text
-  content   String?   @db.Text
-  image1     String?   @db.VarChar(255)
-  image2     String ?  @db.VarChar(255)
-  image3     String?   @db.VarChar(255)
-  image4     String?   @db.VarChar(255)
-  experienceFrom Int? 
-  serviceCharge Int?
-  serviceAreaDivision String? @db.VarChar(255) 
-  serviceAreaDistrict String? @db.VarChar(255)
-  serviceAreaUpzilla String? @db.VarChar(255)
-  keywords  String?   @db.VarChar(255)
-  tags      String?  @db.VarChar(255)
-  type      String?   @db.VarChar(255)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  ServiceCategory ServiceCategory[]
-  ServiceReview ServiceReview[]
+model Service {
+  id                  Int               @id @default(autoincrement())
+  serviceProvider     Users             @relation(fields: [userID], references: [id])
+  userID              Int
+  serviceName         String            @db.VarChar(255)
+  shortContent        String?           @db.Text
+  content             String?           @db.Text
+  image1              String?           @db.VarChar(255)
+  image2              String?           @db.VarChar(255)
+  image3              String?           @db.VarChar(255)
+  image4              String?           @db.VarChar(255)
+  experienceFrom      Int?
+  serviceCharge       Int?
+  serviceAreaDivision String?           @db.VarChar(255)
+  serviceAreaDistrict String?           @db.VarChar(255)
+  serviceAreaUpzilla  String?           @db.VarChar(255)
+  keywords            String?           @db.VarChar(255)
+  tags                String?           @db.VarChar(255)
+  type                String?           @db.VarChar(255)
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+  ServiceCategory     ServiceCategory[]
+  ServiceReview       ServiceReview[]
 }
-model ServiceCategory{
-  id        Int      @id @default(autoincrement())
-  serviceID    Int
-  serviceCategoryName    String  @db.VarChar(255) 
-  service    Service    @relation(fields: [serviceID], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-model ServiceReview{
-  id        Int      @id @default(autoincrement())
-  serviceID    Int
-  service    Service    @relation(fields: [serviceID], references: [id])
 
-  userIDreviwer   Int
-  reviwer    Users    @relation(fields: [userIDreviwer], references: [id])            
-  review    String   @db.Text
-  rating    Int 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model ServiceCategory {
+  id                  Int      @id @default(autoincrement())
+  serviceID           Int
+  serviceCategoryName String   @db.VarChar(255)
+  service             Service  @relation(fields: [serviceID], references: [id])
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }
-model socials{
-  id Int @id @default(autoincrement())
-  facebook String? @db.VarChar(255)
-  youtube String? @db.VarChar(255)
-  twitter String? @db.VarChar(255)
-  linkdin String? @db.VarChar(255)
-  about String? @db.VarChar(1000)
-  address String? @db.VarChar(255)
+
+model ServiceReview {
+  id        Int     @id @default(autoincrement())
+  serviceID Int
+  service   Service @relation(fields: [serviceID], references: [id])
+
+  userIDreviwer Int
+  reviwer       Users    @relation(fields: [userIDreviwer], references: [id])
+  review        String   @db.Text
+  rating        Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model socials {
+  id        Int       @id @default(autoincrement())
+  facebook  String?   @db.VarChar(255)
+  youtube   String?   @db.VarChar(255)
+  twitter   String?   @db.VarChar(255)
+  linkdin   String?   @db.VarChar(255)
+  about     String?   @db.VarChar(1000)
+  address   String?   @db.VarChar(255)
   createdAt DateTime? @default(now()) @db.Timestamp(0)
   updatedAt DateTime? @default(now()) @updatedAt @db.Timestamp(0)
 }
