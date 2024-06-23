@@ -11,6 +11,7 @@ export async function POST(req, res) {
         let reqBody = await req.json();
 
         reqBody.senderId = id;
+        reqBody.receiverId = parseInt(reqBody.receiverId);
         const { senderId, receiverId, content } = reqBody ;// req.body;
 
         if (!senderId || !receiverId || !content) {
