@@ -29,10 +29,10 @@ import {
 import MessageBox from "./MessageBox";
 import ProfileReceiver from "./ProfileReceiver";
 
-const MessageBody = ({ receiverId }) => {
+const MessageBody = ({ receiverId ,conversationId}) => {
   const [message, setMessage] = useState("");
   const [data, setData] = useState([]);
-  let conversationId;
+  let conversation;
   const handleSend = async (e) => {
     e.preventDefault();
     if (IsEmpty(message)) {
@@ -53,9 +53,9 @@ const MessageBody = ({ receiverId }) => {
       if (res["status"] === "success") {
         SuccessToast("Request Success");
         setMessage("");
-        conversationId = res.data.conversationId;
+        conversation= res.data.conversationId;
         // Fetch all messages for the given conversation
-        fetchMessages(conversationId);
+        fetchMessages(conversation);
       } else {
         ErrorToast("Invalid Request ! ");
       }
@@ -64,13 +64,28 @@ const MessageBody = ({ receiverId }) => {
     }
   };
   // Fetch all messages for the given conversation
+    useEffect(() => {
+      const fetchMessages = async (conversationId) => {
+        try {
+          const res = await fetch(
+              `/api/message/singlemessage?id=${conversationId}`
+          );
+          const data = await res.json();
+          console.log(data);
+          setData(data.data);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+        fetchMessages(conversationId);
+    }, [conversationId]);
   const fetchMessages = async (conversationId) => {
     try {
       const res = await fetch(
-        `/api/message/singlemessage?id=${conversationId}`
+          `/api/message/singlemessage?id=${conversationId}`
       );
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       setData(data.data);
     } catch (error) {
       console.error("Error:", error);
