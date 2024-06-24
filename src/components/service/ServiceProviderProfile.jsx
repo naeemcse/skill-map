@@ -8,6 +8,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 import PhoneNumber from "@/components/helper/PhoneNumber"
 import EmailCopy from "@/components/helper/EmailCopy"
+import {Button} from "@/components/ui/button";
 const ServiceProviderProfile = ({person}) => {
     return (
       <div>
@@ -34,7 +35,8 @@ const ServiceProviderProfile = ({person}) => {
           <div className="flex flex-col sm:w-1/3">
             {/* My contact */}
             <div className="py-3 sm:order-none order-3">
-              <h2 className="text-lg font-poppins font-bold text-top-color">My Contact</h2>
+              <h2 className="text-lg font-poppins font-bold text-top-color">My Contact <Link className="ml-1" href={`/message?receiverId=${person.id}`}>  <Button>Message Me</Button></Link> </h2>
+
               <div className="border-2 w-20 border-top-color my-3" />
               <div>
                 <div className="flex items-center my-1">

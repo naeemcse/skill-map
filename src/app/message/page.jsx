@@ -3,8 +3,8 @@ import MessageBody from "@/components/message/MessageBody";
 import React from "react";
 
 const page = ({searchParams}) => {
-    const { reciverId } = searchParams;
-  
+    const { receiverId } = searchParams;
+    
   return (
     <>
     <div className="flex justify-center"> 
@@ -13,11 +13,10 @@ const page = ({searchParams}) => {
           <ChatList />
         </div>
         <div className="col-span-9">
-          <MessageBody reciverId={reciverId} />
+          <MessageBody receiverId={receiverId} />
         </div>
-        
       </div>
-      </div>
+    </div>
     </>
   );
 };

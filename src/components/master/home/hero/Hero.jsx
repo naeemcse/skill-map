@@ -18,7 +18,7 @@ const Hero = () => {
     const heroPhotos = ['driver.jpg','civil_engineer.jpg','teacher.jpg'] ;
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-
+//${colors[currentColorIndex]}
   useEffect(() => {
     const timeout = setTimeout(() => {
       setCurrentColorIndex((currentColorIndex + 1) % colors.length); // Cycle through colors
@@ -28,12 +28,13 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, [currentColorIndex]); // Run effect whenever currentColorIndex changes
     return (
-        <div className={`${colors[currentColorIndex]} transition-all duration-1000 ease-linear flex flex-col  w-full h-96 md:h-screen z-0`}>
+        <div  className={`bg-cyan-300 transition-all duration-1000 ease-linear flex flex-col  w-full h-fit z-0`}>
             <div className={`flex flex-col md:flex-row justify-between  overflow-hidden pt-10 md:pt-32`}>
                 <div className='mx-auto text-center md:w-1/2'>
                     {/* Search Box location and profession  */}
                     <Text props={SpinText}/>
                     <HompageSearchBar/>
+                    <Image className="mx-auto " src="/image/bangladesh-map.svg" height={500}  width={500}  alt="Logo" />
                 </div>
                 <div className='mx-auto md:w-1/2 invisible  md:visible '>
                     <CarosolPhoto/>
@@ -46,7 +47,7 @@ const Hero = () => {
                 </div>
 
             </div>
-            <div className="content-center mt-8">
+            <div className="content-center md:mt-8">
                 <TopCategory/>
             </div>
         </div>

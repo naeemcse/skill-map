@@ -1,12 +1,26 @@
  "use client"
-import {createContext, useState, useContext} from 'react';
+import {createContext,useState,useEffect,useContext} from 'react';
+import { jwtDecode } from "jwt-decode";
+import Cookies from 'js-cookie';
+
 // Create a context with a default value of [false, () => {}]
-const AppContext = createContext(["dark", () => {},""]);
+const AppContext = createContext([""]);
 
 export const AppWrapper = ({children}) =>{
-    let [themeName,setThemeName]=useState("dark");
+   
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const token = Cookies.get('token'); // Replace 'token' with your cookie name
+        if (token) {
+          const decoded = jwtDecode(token);
+          setUser(decoded);
+        }
+      }, []);
+
+    let userId = user ? user.id : null;
     return(
-        <AppContext.Provider value={[themeName,setThemeName]}>
+        <AppContext.Provider value={[userId]}>
             {children}
         </AppContext.Provider>
     )

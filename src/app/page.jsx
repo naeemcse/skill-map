@@ -5,13 +5,14 @@ import MainSection from "@/components/master/home/MainSection";
 
 export default function Home() {
   return (
-    <>
-        <Hero/>
-        {/* <HompageSearchBar/> */}
-        <MainSection/>
+      <>
+          {/*<body style={{backgroundImage: 'url("/image/bangladesh-map.svg")'}}>*/}
+          <Hero/>
+          {/* <HompageSearchBar/> */}
+          <MainSection/>
+          {/*</body>*/}
 
+      </>
 
-     </>
-   
   );
 }

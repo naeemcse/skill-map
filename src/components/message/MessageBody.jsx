@@ -27,8 +27,9 @@ import {
   SuccessToast,
 } from "@/utility/FormHelper";
 import MessageBox from "./MessageBox";
+import ProfileReceiver from "./ProfileReceiver";
 
-const MessageBody = ({ reciverId }) => {
+const MessageBody = ({ receiverId }) => {
   const [message, setMessage] = useState("");
   const [data, setData] = useState([]);
   let conversationId;
@@ -42,7 +43,7 @@ const MessageBody = ({ reciverId }) => {
       const options = {
         method: "POST",
         body: JSON.stringify({
-          receiverId: reciverId,
+          receiverId: receiverId,
           content: message,
         }),
       };
@@ -65,7 +66,9 @@ const MessageBody = ({ reciverId }) => {
   // Fetch all messages for the given conversation
   const fetchMessages = async (conversationId) => {
     try {
-      const res = await fetch(`/api/message/singlemessage?id=${conversationId}`);
+      const res = await fetch(
+        `/api/message/singlemessage?id=${conversationId}`
+      );
       const data = await res.json();
       console.log(data);
       setData(data.data);
@@ -78,17 +81,11 @@ const MessageBody = ({ reciverId }) => {
     <div>
       <Card className="w-full max-w-[1000px]">
         <CardHeader>
-          <CardTitle>Create project</CardTitle>
-          <CardDescription>
-            Deploy your new project in one-click.
-          </CardDescription>
+          <ProfileReceiver receiverId={receiverId}/>
         </CardHeader>
         <Card className="bg-secondary m-2">
           <CardContent className="h-[150px]">
-            All megssages with
-            {reciverId}: {message}
             <MessageBox messages={data} />
-            <span> conversationId is: {conversationId}</span>
           </CardContent>
           <CardFooter className="flex justify-between mt-5">
             <Input

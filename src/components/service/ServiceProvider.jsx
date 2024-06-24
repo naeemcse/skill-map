@@ -67,7 +67,7 @@ const ServiceProvider = (props) => {
             </div>
             <div className="p-4 border-t mx-8 mt-2 justify-between flex">
               <Link href="">
-                <Button> Massage </Button>
+                <Link className="ml-1" href={`/message?receiverId=${item.id}`}>  <Button>Message</Button></Link>
               </Link>
               <Link href={`/serviceProvider/profile?id=${item.id}`}>
                 <Button> Details </Button>
