@@ -25,7 +25,7 @@ const ProfileReceiver = ({receiverId}) => {
             try {
                 let res = await (await fetch(`/api/serviceProvider/details?id=${receiverId}`)).json();
                 setReceiverData(res.data);
-              console.log(res);
+              // console.log(res);
             } catch (error) {
                 console.log(error);
             }

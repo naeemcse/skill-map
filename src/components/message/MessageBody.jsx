@@ -51,7 +51,7 @@ const MessageBody = ({ receiverId ,conversationId}) => {
       let res = await (await fetch(`/api/message/send`, options)).json();
 
       if (res["status"] === "success") {
-        SuccessToast("Request Success");
+        SuccessToast("Message Sent Successfully !");
         setMessage("");
         conversation= res.data.conversationId;
         // Fetch all messages for the given conversation
@@ -65,19 +65,8 @@ const MessageBody = ({ receiverId ,conversationId}) => {
   };
   // Fetch all messages for the given conversation
     useEffect(() => {
-      const fetchMessages = async (conversationId) => {
-        try {
-          const res = await fetch(
-              `/api/message/singlemessage?id=${conversationId}`
-          );
-          const data = await res.json();
-          console.log(data);
-          setData(data.data);
-        } catch (error) {
-          console.error("Error:", error);
-        }
-      };
         fetchMessages(conversationId);
+        receiverId = receiverId;
     }, [conversationId]);
   const fetchMessages = async (conversationId) => {
     try {
@@ -99,13 +88,13 @@ const MessageBody = ({ receiverId ,conversationId}) => {
           <ProfileReceiver receiverId={receiverId}/>
         </CardHeader>
         <Card className="bg-secondary m-2">
-          <CardContent className="h-[150px]">
+          <CardContent className="h-[350px]">
             <MessageBox messages={data} />
           </CardContent>
           <CardFooter className="flex justify-between mt-5">
             <Input
               value={message}
-              className="m-1 mt-10"
+              className="m-1 mt-10 focus:ring-0"
               onChange={(e) => setMessage(e.target.value)}
             />
             <Button className="m-1 mt-10" onClick={handleSend}>

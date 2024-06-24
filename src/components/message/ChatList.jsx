@@ -13,7 +13,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Cookies from 'js-cookie';
 import {jwtDecode} from "jwt-decode";
-
+import ScrollableFeed from "react-scrollable-feed";
 
 
 const ChatList = () => {
@@ -69,29 +69,8 @@ const ChatList = () => {
     }, []);
 
     return (
-        <div>
-
-            <div>
-                {conversations.map(conversation => (
-                    <Link href={`/message?receiverId=${conversation.senderProfile.id}&conversationId=${conversation.id}`} key={conversation.id}>
-                        <div className="border p-2 m-1 rounded flex items-center">
-                            <Image
-                                className="m-1 rounded-full"
-                                src={conversation.senderProfile.profilePhoto ||"/image/dummyUser.png"}
-                                alt="user image"
-                                width={30}
-                                height={30}
-                            />
-                            <div>
-                                <strong> {conversation.senderProfile.firstName}</strong>
-                                <p className="text-sm">{conversation.senderProfile ? conversation.senderProfile.email : 'No Email'}</p>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
-            </div>
-
-            <Card className="w-full">
+        <ScrollableFeed>
+            <Card className="w-full min-h-[450px] max-h-screen">
                 <CardHeader>
                     <CardTitle> All Message </CardTitle>
                     <CardDescription>Click one to send Message </CardDescription>
@@ -99,26 +78,31 @@ const ChatList = () => {
                 <CardContent>
                     <div>
                         <div className="grid w-full items-center gap-4">
-
-                            <Link href={`/`}>
-                                <div className="border p-2 m-1 rounded flex items-center ">
-                                    <Image className="m-1 rounded-full" src={"/image/dummyUser.png"} alt={"fb"}
-                                           width={30} height={30}/>
-                                    <div>
-                                        <strong>Andrew Alfred</strong>
-                                        <p className="text-sm">Technical advisor</p>
+                            {conversations.map(conversation => (
+                                <Link href={`/message?receiverId=${conversation.senderProfile.id}&conversationId=${conversation.id}`} key={conversation.id}>
+                                    <div className="border p-2 m-1 rounded flex items-center">
+                                        <Image
+                                            className="m-1 rounded-full"
+                                            src={conversation.senderProfile.profilePhoto ||"/image/dummyUser.png"}
+                                            alt="user image"
+                                            width={30}
+                                            height={30}
+                                        />
+                                        <div>
+                                            <strong> {conversation.senderProfile.firstName}</strong>
+                                            <p className="text-sm">{conversation.senderProfile ? conversation.senderProfile.email : 'No Email'}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
+                            ))}
                         </div>
                     </div>
                 </CardContent>
                 <CardFooter className="flex justify-between">
-                    <Button variant="outline">Cancel</Button>
-                    <Button>Deploy</Button>
+
                 </CardFooter>
             </Card>
-        </div>
+        </ScrollableFeed>
     );
 };
 
