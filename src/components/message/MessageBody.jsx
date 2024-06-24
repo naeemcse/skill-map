@@ -66,7 +66,6 @@ const MessageBody = ({ receiverId ,conversationId}) => {
   // Fetch all messages for the given conversation
     useEffect(() => {
         fetchMessages(conversationId);
-        receiverId = receiverId;
     }, [conversationId]);
   const fetchMessages = async (conversationId) => {
     try {
@@ -89,7 +88,7 @@ const MessageBody = ({ receiverId ,conversationId}) => {
         </CardHeader>
         <Card className="bg-secondary m-2">
           <CardContent className="h-[350px]">
-            <MessageBox messages={data} />
+            { conversationId && <MessageBox messages={data}/>}
           </CardContent>
           <CardFooter className="flex justify-between mt-5">
             <Input
