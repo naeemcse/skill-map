@@ -86,9 +86,6 @@ export default function DrawerDemo({isLoggedIn}) {
                                 </Link>
                             </>)
                         }
-
-
-
                         <ModeToggle/>
                     </div>
 
