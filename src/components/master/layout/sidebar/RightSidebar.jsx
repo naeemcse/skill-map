@@ -61,9 +61,9 @@ export default function DrawerDemo({isLoggedIn}) {
                         {
                             isLoggedIn?(<>
                                 <Link
-                                    href="/user/profile/update"
+                                    href="/dashboard"
                                     className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
-                                >  Update
+                                >  Dashboard
                                 </Link>
                                 <Link
                                     href="api/user/login"
