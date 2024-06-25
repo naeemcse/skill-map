@@ -16,7 +16,6 @@ const page = async (props)=> {
     const data = await getData(id);
     return (
         <div>
-           
             <ServiceProviderProfile person={data.result}/>
         </div>
     );

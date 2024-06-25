@@ -1,6 +1,7 @@
 
 import React from "react";
 import  Link  from "next/link";
+import {FormatedDate} from "@/components/common/dayago/DaysAgo";
 const PostSearchResult = ({ service }) => {
   return (
     <div className="flex flex-wrap p-5 justify-center text-center -mx-2">
@@ -30,28 +31,30 @@ const PostSearchResult = ({ service }) => {
             </div>
             {item.serviceProvider && (
                 <>
-            <div className="flex items-center justify-between inset-x-0 bottom-0 p-6">
-              <img
-                className="w-8 h-8 rounded-full mr-4"
-                src={ item.serviceProvider.profilePhoto || "/image/dummyUser.png"}
-                alt={item.serviceName}
-              />
-              <p className="text-foreground text-xs md:text-sm">
-                Name
-                 {item.serviceProvider['firstName']}
-              </p>
-              <p className="text-foreground text-xs md:text-sm">
-                Profession
-                 {item.serviceProvider['profession']}
-              </p>
-            </div>
+                  <div className="flex items-center justify-between inset-x-0 bottom-0 p-6">
+                    <img
+                        className="w-8 h-8 rounded-full mr-4"
+                        src={item.serviceProvider.profilePhoto || "/image/dummyUser.png"}
+                        alt={item.serviceName}
+                    />
+                    <p className="text-foreground text-xs md:text-sm">
+                      Name:
+                      <span className="text-secondary"> {item.serviceProvider['firstName']}</span>
+                    </p>
+                    <p className="text-foreground text-xs md:text-sm">
+                      Profession
+                      {item.serviceProvider['profession']}
+                    </p>
+
+                  </div>
+                  <div> Created at: <FormatedDate createdAt={item.createdAt}/></div>
                 </>
             )}
           </Link>
         </div>
-      </div>   
-     
-         )
+       </div>
+
+        )
       })
     }
     </div>

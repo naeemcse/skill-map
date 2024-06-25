@@ -6,6 +6,8 @@ import {
     AvatarImage,
   } from "@/components/ui/avatar"
 import parser from 'html-react-parser'
+import  {FormatedDate} from "@/components/common/dayago/DaysAgo";
+
 const PostDetails = ({service}) => {
   return (
     <div>
@@ -30,20 +32,24 @@ const PostDetails = ({service}) => {
 
                 }
               </div>
-              <p className="text-foreground mb-4">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-              <p className="text-foreground mb-4">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo.
-              </p>
+              {/*<p className="text-foreground mb-4">*/}
+              {/*  Duis aute irure dolor in reprehenderit in voluptate velit esse*/}
+              {/*  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat*/}
+              {/*  cupidatat non proident, sunt in culpa qui officia deserunt*/}
+              {/*  mollit anim id est laborum.*/}
+              {/*</p>*/}
+              {/*<p className="text-foreground mb-4">*/}
+              {/*  Sed ut perspiciatis unde omnis iste natus error sit voluptatem*/}
+              {/*  accusantium doloremque laudantium, totam rem aperiam, eaque ipsa*/}
+              {/*  quae ab illo inventore veritatis et quasi architecto beatae*/}
+              {/*  vitae dicta sunt explicabo.*/}
+              {/*</p>*/}
                 <h4 className="text-2xl font-bold mt-8 mb-2"> Experience from : {service.experienceFrom}  </h4>
                 <h4 className="text-2xl font-bold mt-8 mb-2"> Price :  {service.serviceCharge} Taka   </h4>
+
+              <div>
+                Posted: <FormatedDate createdAt={service.createdAt} />
+              </div>
 
             </div>
             <div className="w-full md:w-4/12 px-4 mb-8">

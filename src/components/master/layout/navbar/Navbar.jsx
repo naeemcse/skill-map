@@ -30,7 +30,7 @@ const Navbar = ({isLoggedIn}) => {
                 </Link>
 
                 <Link
-                    href="/ "
+                    href="/service "
                     className="text-foreground hover:bg-foreground hover:text-background rounde-lg p-2 hover:transion ease-linear duration-400 rounded"
                 >
                   Services

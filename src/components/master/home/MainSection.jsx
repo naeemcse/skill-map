@@ -5,7 +5,7 @@ import {divisions} from "@/assets/divisinDistrictUpzillaName";
 
 const MainSection = () => {
     return (
-        <div>
+        <div className="h-screen sticky">
             <SelectLocationSearchBar divisions={divisions}/>
             {/*<SearchPerson/>*/}
         </div>

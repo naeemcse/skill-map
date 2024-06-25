@@ -1,13 +1,13 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import PostSearchResult from "@/components/service/post/PostSearchResult";
 
-const MyComponent = () => {
+const MyServices = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('/api/servicePost/allService');
+                const response = await fetch('/api/servicePost/manage');
                 if (response.ok) {
                     const { data } = await response.json();
                     setData(data);
@@ -20,12 +20,11 @@ const MyComponent = () => {
         };
         fetchData();
     }, []);
-
     return (
         <div>
-           <PostSearchResult service={data} />
+            <PostSearchResult service={data} />
         </div>
     );
 };
 
-export default MyComponent;
+export default MyServices;

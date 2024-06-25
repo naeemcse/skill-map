@@ -10,10 +10,11 @@ import { ErrorToast, IsEmpty, SuccessToast } from "@/utility/FormHelper";
 import { useRouter } from "next/navigation";
 import {Button }from "@/components/ui/button"
 import SearchLocationSuggestion from "@/components/SerachLocationSuggestion";
+import LocationSelector from "@/components/user/profile/LocationSelector/LocationSelector";
 
 
 const UpdateUserProfile = ({info}) => {
-  let router = useRouter();
+    const router = useRouter()
   
   const classOfInput = `border bg-background border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 w-96 m-1`
   
@@ -87,7 +88,8 @@ const handleChangeLocationState = (value) => {
     let res=await (await fetch(`/api/user/profile/update`,options)).json();
   
     if (res['status'] === "success") {
-      SuccessToast("Request Success");
+        SuccessToast("Profile Updated");
+      router.push("/dashboard");
       // router.refresh();
     } else {
       ErrorToast("Invalid Request ! ");
@@ -262,7 +264,6 @@ const handleChangeLocationState = (value) => {
               placeholder="Mymensingh.."
             />
           </div>
-
           <div className="md:w-1/2 px-3">
             <label
               className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
@@ -291,6 +292,7 @@ const handleChangeLocationState = (value) => {
               placeholder="Nakla"
             />
           </div>
+            <LocationSelector data={data} setData={setData} />
         </div>
         <h2 className="text-center border-b-2 border-t-2">
           {" "}

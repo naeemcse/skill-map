@@ -15,7 +15,7 @@ const page = async () => {
 
     return (
         <div>
-                <h1> All Service  </h1>
+                <h1 className="text-center"> All Service  </h1>
             <AllService/>
         </div>
     );

@@ -16,17 +16,7 @@ const Hero = () => {
     const SpinText = "Find Your People" ;
     const colors = ['bg-blue-500', 'bg-red-500', 'bg-green-500','bg-[#9B3908]','bg-[#5E1528]'];
     const heroPhotos = ['driver.jpg','civil_engineer.jpg','teacher.jpg'] ;
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-//${colors[currentColorIndex]}
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setCurrentColorIndex((currentColorIndex + 1) % colors.length); // Cycle through colors
-      setCurrentPhotoIndex((currentPhotoIndex + 1) % heroPhotos.length); // Cycle through photos
-    }, 3000);
 
-    return () => clearTimeout(timeout);
-  }, [currentColorIndex]); // Run effect whenever currentColorIndex changes
     return (
         <div  className={`bg-cyan-300 transition-all duration-1000 ease-linear flex flex-col  w-full h-fit z-0`}>
             <div className={`flex flex-col md:flex-row justify-between  overflow-hidden pt-10 md:pt-32`}>

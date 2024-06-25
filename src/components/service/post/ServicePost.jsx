@@ -69,7 +69,8 @@ const ServicePost = () => {
     let res = await (await fetch(`/api/servicePost/manage`, options)).json();
 
     if (res["status"] === "success") {
-      SuccessToast("Request Success");
+      SuccessToast("Service was Posted Successfully !");
+      router.push("/dashboard");
 
       //   router.push("/user/verifyOTP");
     } else {

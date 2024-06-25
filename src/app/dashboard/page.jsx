@@ -25,8 +25,8 @@ const Page = () => {
                     <Link  href={"/user/profile/update"}> <Button> Update Profile </Button>  </Link>
                     <Link  href={"/service/post"}> <Button> Post a Service </Button>  </Link>
 
-                    <Link  href={"/"}> <Button> Inbox </Button>  </Link>
-                    <Link  href={"/"}> <Button> Inbox </Button>  </Link>
+                    <Link  href={"/dashboard/myservices"}> <Button> My Services </Button>  </Link>
+                    {/*<Link  href={"/"}> <Button> Inbox </Button>  </Link>*/}
                 </div>
             </CardContent>
         </Card>
