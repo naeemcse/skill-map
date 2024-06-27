@@ -16,9 +16,10 @@ export default function Home() {
           {/*<MainSection/>*/}
 
           {/*</body>*/}
-<div className="mt-5">
+
+{/* <div className="mt-5">
     <AllService/>
-</div>
+</div> */}
 
       </>
 

@@ -92,14 +92,3 @@ section{
 .leaf1 img{
     transform: rotate(180deg);
 }
-h2{
-    position:absolute ;
-    top:40%;
-    width:100%;
-    font-family: 'Courgette', cursive;
-    font-size:4em;
-    text-align:center;
-    transform:translate ;
-    color:#fff;
-    transform:translateY (-50%);
-}

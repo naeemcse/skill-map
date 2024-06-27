@@ -2,8 +2,9 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { MdWork } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
+import { CiStar } from "react-icons/ci";
 import Link from "next/link";
-import  Image from "next/image";
+import Image from "next/image";
 const ServiceProvider = (props) => {
   return (
     <div className="flex flex-wrap">
@@ -25,7 +26,7 @@ const ServiceProvider = (props) => {
             <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border--card-foreground rounded-full overflow-hidden">
               <img
                 className="object-cover object-center w-32 h-32"
-                src={ item.profilePhoto||  "/image/dummyUser.png"}
+                src={item.profilePhoto || "/image/dummyUser.png"}
                 alt={item.lastName}
                 width={100}
                 height={100}
@@ -33,8 +34,7 @@ const ServiceProvider = (props) => {
             </div>
             <div className="text-center mt-2">
               <h2 className="font-semibold">
-                {" "}
-                {item.firstName} {item.lastName}{" "}
+                 {item.firstName} {item.lastName}
               </h2>
               <p className="text-card-foreground">
                 {" "}
@@ -45,7 +45,7 @@ const ServiceProvider = (props) => {
             <ul className="py-4 mt-2 text---card-foreground flex items-center justify-around">
               <li className="flex flex-col items-center justify-around">
                 Rattings
-                <div>2k</div>
+                <div className="text-amber-300"><CiStar className="inline m-1"/><CiStar className="inline m-1" /> </div>
               </li>
               <li className="flex flex-col items-center justify-between">
                 Total Post
@@ -67,7 +67,10 @@ const ServiceProvider = (props) => {
             </div>
             <div className="p-4 border-t mx-8 mt-2 justify-between flex">
               <Link href="">
-                <Link className="ml-1" href={`/message?receiverId=${item.id}`}>  <Button>Message</Button></Link>
+                <Link className="ml-1" href={`/message?receiverId=${item.id}`}>
+                  {" "}
+                  <Button>Message</Button>
+                </Link>
               </Link>
               <Link href={`/serviceProvider/profile?id=${item.id}`}>
                 <Button> Details </Button>

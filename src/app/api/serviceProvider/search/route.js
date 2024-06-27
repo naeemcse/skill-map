@@ -10,17 +10,26 @@ try{
     let upzillaName = (searchParams.get('upzillaName')) ;
 
     const prisma = new PrismaClient();
+    // here will be a search query for the service post 
     const result = await prisma.users.findMany({
         where: {
-            divisionName:divisionName,
-            districtName: districtName,
-            upzillaName: upzillaName,
-            profession:{
-                contains: keyword
+          OR: [
+            {
+              divisionName: divisionName,
+              districtName: districtName,
+              upzillaName: upzillaName,
+              profession: { contains: keyword },
+            },
+            {
+              upzillaName: { contains: upzillaName }
+            },
+            {
+                profession:{contains:keyword}
             }
-           // here will be a search query for the service post 
-        },            
-    });
+          ]
+        }
+      });
+      
      return NextResponse.json({ status: "success", data:result });
     }
 

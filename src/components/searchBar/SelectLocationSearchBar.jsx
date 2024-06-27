@@ -36,7 +36,7 @@ const SelectLocationSearchBar = ({ divisions }) => {
     };
 
     return (
-        <div className="sticky top-16 z-50 lg:mx-20 flex flex-col md:flex-row gap-2 items-center justify-center">
+        <div className="sticky top-16 z-[1001] lg:mx-20 flex flex-col md:flex-row gap-2 items-center justify-center">
             {/* Division Section */}
             <Select
                 defaultValue={selectedDivision}
@@ -44,7 +44,7 @@ const SelectLocationSearchBar = ({ divisions }) => {
                 <SelectTrigger className="w-4/5 md:w-1/5 text-cyan-400" >
                     <SelectValue id="division" placeholder="Select Division"/>
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-[2000]">
                     <SelectGroup>
                         <SelectLabel>Select Division</SelectLabel>
                         {divisions.map((division, index) => (
@@ -61,7 +61,7 @@ const SelectLocationSearchBar = ({ divisions }) => {
                 <SelectTrigger className="w-4/5 md:w-1/5">
                     <SelectValue id="district" placeholder="Select District" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-[2000] h-70 ">
                     <SelectGroup>
                         <SelectLabel>Select District for {selectedDivision}</SelectLabel>
                         {selectedDivision && divisions.find(division => division.name === selectedDivision)
@@ -80,7 +80,7 @@ const SelectLocationSearchBar = ({ divisions }) => {
                 <SelectTrigger className="w-4/5 md:w-1/5 md:m-2 ">
                     <SelectValue id="upazila" placeholder="Select Upazila" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="z-[2000]">
                     <SelectGroup>
                         <SelectLabel>Select Upazila for {selectedDistrict}</SelectLabel>
                         {selectedDistrict && divisions.find(division => division.name === selectedDivision)
@@ -107,7 +107,7 @@ const SelectLocationSearchBar = ({ divisions }) => {
             className="md:w-1/5 md:m-2"
           href={`/search/?divisionName=${selectedDivision}&districtName=${selectedDistrict}&upzillaName=${selectedUpazila}&keyword=${profession}`}
         >
-            <Button className='w-full' > Submit </Button>
+            <Button className='w-full' > Search </Button>
             </Link>
         </div>
 

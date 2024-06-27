@@ -14,6 +14,7 @@ import ImageUploader from "@/components/uploadthing/ImageUploader";
 import LocationSelector from "@/components/user/profile/LocationSelector/LocationSelector";
 
 
+
 const UpdateUserProfile = ({info}) => {
   const router = useRouter();
 
@@ -116,7 +117,7 @@ const handleChangeLocationState = (value) => {
             />
 
               <ImageUploader setImageURL = {setImageURL} />
-
+{/* <Image src={imageURL} width={50} height={60} alt={"profile photo"}/> */}
           </div>
           <div className="w-2/3 sm:text-center pl-5 mt-10 text-start overflow-hidden">
             <p className="text-heading"> Google Location </p>

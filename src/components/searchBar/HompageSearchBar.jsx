@@ -18,7 +18,7 @@ const HompageSearchBar = () => {
   };
 
     return (
-        <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center z-[100]">
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
         <input
           type="text"
